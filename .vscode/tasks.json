@@ -1,0 +1,122 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Install Python packages for Arduino",
+            "type": "shell",
+            "isBackground": true,
+            "problemMatcher": [],
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "linux": {
+                "command": "pip install Jinja2 graphviz",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "osx": {
+                "command": "pip install Jinja2 graphviz",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "windows": {
+                "command": "pip install Jinja2 graphviz",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            }
+        },
+        {
+            "label": "Verify",
+            "type": "shell",
+            "isBackground": true,
+            "problemMatcher": [],
+            "linux": {
+                "command": "echo \"Executable Path : ${command:cmake.launchTargetPath}\"",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "osx": {
+                "command": "echo \"Executable Path : ${command:cmake.launchTargetPath}\"",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "windows": {
+                "command": "echo \"Executable Path : ${command:cmake.launchTargetPath}\"",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            }
+        },
+        {
+            "label": "Upload",
+            "type": "shell",
+            "isBackground": true,
+            "problemMatcher": [],
+            "linux": {
+                "command": "openocd -f board/st_nucleo_f4.cfg -c \"program {${command:cmake.launchTargetPath}} verify reset\" -c shutdown",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "osx": {
+                "command": "openocd -f board/st_nucleo_f4.cfg -c \"program {${command:cmake.launchTargetPath}} verify reset\" -c shutdown",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "windows": {
+                "command": "C:/OpenOCD/bin/openocd.exe -f board/st_nucleo_f4.cfg -c 'program {${command:cmake.launchTargetPath}} verify reset' -c shutdown",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            }
+        },
+        {
+            "label": "Set Git Username and Email",
+            "type": "shell",
+            "isBackground": true,
+            "problemMatcher": [],
+            "linux": {
+                "command": "git config --local user.name '${input:username}' && git config --local user.email '${input:email}'",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "osx": {
+                "command": "git config --local user.name '${input:username}' && git config --local user.email '${input:email}'",
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                    }
+            },
+            "windows": {
+                "command": "git config --local user.name '${input:username}'; git config --local user.email '${input:email}'",
+                    "options": {
+                        "cwd": "${workspaceRoot}"
+                        }
+            }
+            
+
+        }
+    ],
+    "inputs": [
+        {
+        "id": "username",
+        "type": "promptString",
+        "description": "Enter your Git username",
+        "default": "Your Name"
+        },
+        {
+        "id": "email",
+        "type": "promptString",
+        "description": "Enter your Git email",
+        "default": "you@example.com"
+        }
+    ]  
+}

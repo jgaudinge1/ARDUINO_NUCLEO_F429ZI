@@ -1,0 +1,13 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "cmake.preferredGenerators": [
+        "Ninja",
+        "Unix Makefiles"
+      ],
+    "cmake.configureOnOpen": false,
+    "git.autofetch": true,
+    "C_Cpp.default.browse.databaseFilename": "${workspaceFolder}/.vscode/.BROWSE.VC.DB",
+    "cmake.options.statusBarVisibility": "visible",
+    "git.requireGitUserConfig": false
+}
