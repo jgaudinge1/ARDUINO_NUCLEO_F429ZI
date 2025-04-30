@@ -45,6 +45,9 @@ __attribute__((constructor(101))) void premain()
 /*
  * \brief Main entry point of Arduino application
  */
+
+
+
 int main(void)
 {
   initVariant();
@@ -61,3 +64,4 @@ int main(void)
 
   return 0;
 }
+
