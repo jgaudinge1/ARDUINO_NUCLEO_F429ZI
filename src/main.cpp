@@ -8,7 +8,7 @@
 #define BP PC13
 
 
-typedef enum {relache, appui, att_appui, att_relache} etat_type;
+typedef enum {relache, appui} etat_type;
 
 void automate(void)
 {
@@ -25,47 +25,36 @@ void automate(void)
         break;
 
     case appui:
-        j++;
-        lcd_locate(10,10);
-        lcd_printf("%d", j);
+        if(digitalRead(BP) == 0)
+        { 
+            j++;
+            lcd_locate(10,10);
+            lcd_printf("%d", j);
+        }
         break;
 
-    case att_appui:
-        break;
-
-    case att_relache:
-        break;    
-
-
+    default: break;
   }
 
   switch(etat)
   {
 
     case relache:
-        etat = att_appui;
+        if(digitalRead(BP) == 1)
+        { 
+            etat= appui;
+        }
         break;
 
     case appui:
-       
-        etat= att_relache;
+        if(digitalRead == 0)
+        { 
+            etat= relache;
+        }
+    
         break;
 
-    case att_appui:
-        if(digitalRead(BP) == 1)
-        {
-            etat = appui;
-            
-        }
-        break;
-
-    case att_relache:
-        if(digitalRead(BP) == 0)
-        {
-            etat = relache;
-            
-        }
-        break;    
+    default: break; 
 
 
   }
